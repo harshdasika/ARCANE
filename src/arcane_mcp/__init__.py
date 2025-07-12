@@ -1,5 +1,5 @@
 # src/arcane_mcp/__init__.py
-"""A.R.C.A.N.E MCP Server"""
+"""ARCANE MCP Server"""
 
 __version__ = "0.1.0"
 __author__ = "Harsh Dasika"

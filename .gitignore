@@ -111,7 +111,7 @@ dmypy.json
 cython_debug/
 
 # MCP specific
-mcp-server-academic-discovery.log
+arcane-mcp-server.log
 mcp.log
 
 # Node.js (if any frontend tools)
@@ -142,4 +142,10 @@ yarn-error.log*
 *~
 
 # Project specific
-# Add any other files specific to your project that shouldn't be tracked
+# To add any other files specific to the project that shouldn't be tracked
+
+# Test and debug files
+test_api.py
+test_comprehensive.py
+debug_resolver.py
+IDENTIFIER_COMPATIBILITY.md

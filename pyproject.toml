@@ -7,7 +7,7 @@ name = "ARCANE"
 version = "0.1.0"
 description = "Unified Academic Discovery MCP Server for arXiv, Semantic Scholar, and OpenCitations"
 readme = "README.md"
-license = "Apache 2.0"
+license = {text = "Apache License (2.0)"}
 requires-python = ">=3.9"
 authors = [
     { name = "Harsh Dasika" },
@@ -45,4 +45,4 @@ line-length = 88
 
 [tool.isort]
 profile = "black"
-known_first_party = ["academic_discovery"]
+known_first_party = ["arcane_mcp"]

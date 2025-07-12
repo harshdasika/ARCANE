@@ -60,7 +60,7 @@ Add the MCP server to your Claude Desktop configuration:
 {
   "mcpServers": {
     "academic-discovery": {
-      "command": "/path/to/your/A.R.C.A.N.E/academic-discovery-wrapper.sh",
+      "command": "/path/to/your/ARCANE/arcane-wrapper.sh",
       "env": {
         "LOG_LEVEL": "INFO"
       }
@@ -69,7 +69,7 @@ Add the MCP server to your Claude Desktop configuration:
 }
 ```
 
-**Important:** Replace `/path/to/your/A.R.C.A.N.E/` with the actual path to your project directory.
+**Important:** Replace `/path/to/your/ARCANE/` with the actual path to your project directory.
 
 ### 4. Restart Claude Desktop
 
@@ -95,13 +95,25 @@ Once Claude Desktop restarts, you can test the MCP server by asking:
 
 ## 🛠️ Available Tools
 
-| Tool | Description |
-|------|-------------|
-| `search_papers` | Multi-source paper search |
-| `get_paper` | Detailed paper information |
-| `resolve_identifiers` | Cross-platform ID mapping |
-| `get_citations` | Citation and reference data |
-| `build_citation_graph` | Network visualization data |
+| Tool | Description | Best Identifier |
+|------|-------------|----------------|
+| `search_papers` | Multi-source paper search | Any (natural language queries) |
+| `get_paper` | Detailed paper information | arXiv ID, DOI, or Semantic Scholar ID |
+| `resolve_identifiers` | Cross-platform ID mapping | Any identifier type |
+| `get_citations` | Citation and reference data | **DOI recommended** |
+| `build_citation_graph` | Network visualization data | **DOI required** |
+
+## 📋 Identifier Compatibility
+
+ARCANE supports multiple paper identifiers, but not all tools work equally well with all identifier types:
+
+- **arXiv IDs** (e.g., `2006.12469`): Best for paper details and metadata
+- **DOIs** (e.g., `10.1088/2632-2153/ac362b`): Best for citations and impact analysis  
+- **Semantic Scholar IDs**: Good for cross-referencing
+
+**For citation analysis and graphs, DOI identifiers are strongly recommended.**
+
+See `IDENTIFIER_COMPATIBILITY.md` for detailed compatibility information.
 
 ## 🔧 Configuration
 
@@ -115,7 +127,7 @@ SEMANTIC_SCHOLAR_API_KEY=your_api_key_here
 OPENCITATIONS_ACCESS_TOKEN=your_token_here
 
 # Database
-ACADEMIC_MCP_DB_PATH=./data/academic_papers.db
+ARCANE_DB_PATH=./data/academic_papers.db
 
 # Logging
 LOG_LEVEL=INFO
@@ -172,16 +184,16 @@ All refer to the same paper ("Attention Is All You Need"), but each platform use
 
 **2. Claude Desktop can't find the server**
 - Check that the path in your config file is correct
-- Ensure the wrapper script is executable: `chmod +x academic-discovery-wrapper.sh`
+- Ensure the wrapper script is executable: `chmod +x arcane-wrapper.sh`
 - Verify the virtual environment exists and is properly set up
 
 **3. Server starts but Claude Desktop doesn't connect**
 - Check the Claude Desktop logs for connection errors
-- Ensure the server is running: `./academic-discovery-wrapper.sh`
+- Ensure the server is running: `./arcane-wrapper.sh`
 - Restart Claude Desktop after configuration changes
 
 **4. Permission denied errors**
-- Make sure the wrapper script is executable: `chmod +x academic-discovery-wrapper.sh`
+- Make sure the wrapper script is executable: `chmod +x arcane-wrapper.sh`
 - Check file permissions on the project directory
 
 ### Manual Testing
@@ -192,10 +204,10 @@ Test the server manually:
 source venv/bin/activate
 
 # Test the server directly
-python src/academic_discovery/server.py
+python src/arcane_mcp/server.py
 
 # Or use the wrapper script
-./academic-discovery-wrapper.sh
+./arcane-wrapper.sh
 ```
 
 You should see: `INFO:arcane: MCP Server initialized` in the terminal.
