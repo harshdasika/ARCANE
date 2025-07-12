@@ -20,6 +20,8 @@ from arcane_mcp.data_sources.semanticScholar_client import SemanticScholarClient
 from arcane_mcp.data_sources.openCitations_client import OpenCitationsClient
 from arcane_mcp.config.settings import load_config
 
+import weave
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arcane")
@@ -48,6 +50,9 @@ class AcademicDiscoveryServer:
         
         # Register handlers
         self._register_handlers()
+
+        # Initialize Weave monitoring
+        weave.init("ARCANE")
         
         logger.info(" MCP Server initialized")
     
@@ -173,6 +178,7 @@ class AcademicDiscoveryServer:
             )]
     
     # Tool implementations
+    @weave.op()
     async def _search_papers(self, query: str, sources: List[str] = ["all"], 
                            max_results: int = 10) -> Dict[str, Any]:
         """Search for papers across multiple sources"""
@@ -211,6 +217,7 @@ class AcademicDiscoveryServer:
         
         return results
     
+    @weave.op()
     async def _get_paper(self, identifier: str, include_citations: bool = False) -> Dict[str, Any]:
         """Get detailed paper information"""
         try:
@@ -241,6 +248,7 @@ class AcademicDiscoveryServer:
             logger.error(f"Error in _get_paper: {str(e)}")
             return {"error": f"Error retrieving paper: {str(e)}"}
     
+    @weave.op()
     async def _resolve_identifiers(self, identifier: str) -> Dict[str, Any]:
         """Resolve all identifiers for a paper"""
         try:
@@ -264,6 +272,7 @@ class AcademicDiscoveryServer:
             logger.error(f"Error in _resolve_identifiers: {str(e)}")
             return {"error": f"Error resolving identifiers: {str(e)}"}
     
+    @weave.op()
     async def _get_citations(self, identifier: str, direction: str = "both") -> Dict[str, Any]:
         """Get citation data for a paper"""
         try:
@@ -304,6 +313,7 @@ class AcademicDiscoveryServer:
             logger.error(f"Error in _get_citations: {str(e)}")
             return {"error": f"Error retrieving citations: {str(e)}"}
     
+    @weave.op()
     async def _build_citation_graph(self, identifier: str, depth: int = 2, 
                                   max_nodes: int = 50) -> Dict[str, Any]:
         """Build citation network graph"""
