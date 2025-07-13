@@ -1,0 +1,37 @@
+# ARCANE Temporal Configuration
+# Time-based filters and thresholds
+
+# Publication year filters
+publication_years:
+  outdated_penalty_year: 2000      # Papers before this year get penalties
+  strict_outdated_year: 2015       # Stricter penalty threshold
+  recent_boost_year: 2020          # Papers after this year get boosts
+
+# Citation count thresholds
+citations:
+  high_impact_threshold: 50        # High-impact paper threshold
+  medium_impact_threshold: 20      # Medium-impact paper threshold
+  boost_threshold: 50              # Threshold for citation count boosts
+
+# Feasibility scoring adjustments
+feasibility:
+  outdated_penalty: 0.1            # Penalty for papers before strict_outdated_year
+  recent_boost: 0.1                # Boost for papers after recent_boost_year
+  high_citation_boost: 0.1         # Boost for high-impact papers
+
+# Search confidence calculations
+confidence:
+  coverage_optimal_papers: 50      # Optimal number of papers for coverage confidence
+  diversity_optimal_domains: 3     # Optimal number of domains for diversity confidence
+
+# Validation thresholds
+validation:
+  high_similarity_threshold: 0.7   # Threshold for high-similarity insights
+  high_feasibility_threshold: 0.7  # Threshold for high-feasibility insights
+  implementable_threshold: 0.6     # Threshold for implementable solutions
+
+# Reasoning and decision thresholds
+reasoning:
+  similarity_explanation_threshold: 0.5  # Threshold for similarity explanations
+  feasible_transfer_threshold: 0.6       # Threshold for feasible transfer classification
+  high_similarity_ratio_threshold: 0.6   # Threshold for high similarity ratio metrics

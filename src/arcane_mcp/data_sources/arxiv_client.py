@@ -3,14 +3,19 @@
 import xml.etree.ElementTree as ET
 from typing import Dict, List, Optional, Any
 from arcane_mcp.data_sources.base_client import BaseAPIClient, RateLimitConfig
+from ..config.config_manager import config_manager
 
 class ArxivClient(BaseAPIClient):
     """arXiv API client using their REST API"""
     
     def __init__(self):
+        # Get configuration values
+        base_url = config_manager.get('api', 'arxiv.base_url', 'http://export.arxiv.org/api/')
+        rate_limit = config_manager.get('api', 'arxiv.rate_limit', 1.0)
+        
         super().__init__(
-            base_url="http://export.arxiv.org/api/",
-            rate_limit_config=RateLimitConfig(requests_per_second=1.0),
+            base_url=base_url,
+            rate_limit_config=RateLimitConfig(requests_per_second=rate_limit),
         )
     
     async def search_papers(self, query: str, max_results: int = 10, 

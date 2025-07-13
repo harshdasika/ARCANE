@@ -1,0 +1,25 @@
+# ARCANE API Configuration
+# External API endpoints and rate limiting
+
+semantic_scholar:
+  base_url: "https://api.semanticscholar.org/graph/v1/"
+  rate_limit: 1.0              # requests per second (can be overridden by S2_RATE_LIMIT)
+  enhanced_rate_limit: 10.0    # with API key
+  default_limit: 100
+  user_agent: "ARCANE/1.0"
+
+opencitations:
+  base_url: "https://opencitations.net/index/api/v2/"
+  rate_limit: 2.0              # requests per second (can be overridden by OC_RATE_LIMIT)
+  user_agent: "ARCANE/1.0"
+  max_graph_nodes: 100
+
+arxiv:
+  base_url: "http://export.arxiv.org/api/"
+  rate_limit: 1.0              # requests per second (can be overridden by ARXIV_RATE_LIMIT)
+  xml_namespace: "http://www.w3.org/2005/Atom"
+
+# Rate limiting configuration
+rate_limiting:
+  cutoff_time: 1.0            # seconds
+  sleep_multiplier: 1.0       # multiplier for sleep time calculation

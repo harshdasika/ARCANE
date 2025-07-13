@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 from fuzzywuzzy import fuzz
 from pathlib import Path
+from ..config.config_manager import config_manager
 
 # Import API clients
 from arcane_mcp.data_sources.arxiv_client import ArxivClient
@@ -44,11 +45,12 @@ class UnifiedPaper:
 class IdentifierResolver:
     """Core identifier resolution system"""
     
-    def __init__(self, db_path: str = "paper_mappings.db", 
+    def __init__(self, db_path: Optional[str] = None, 
                  arxiv_client: Optional[ArxivClient] = None,
                  semantic_scholar_client: Optional[SemanticScholarClient] = None,
                  opencitations_client: Optional[OpenCitationsClient] = None):
-        self.db_path = db_path
+        # Get database path from configuration if not provided
+        self.db_path = db_path or config_manager.get('main', 'database.path', 'paper_mappings.db')
         self.logger = logging.getLogger(__name__)
         self._init_database()
         

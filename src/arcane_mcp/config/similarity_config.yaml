@@ -1,0 +1,60 @@
+# ARCANE Similarity Configuration
+# Weights, thresholds, and parameters for similarity calculations
+
+# Similarity component weights (must sum to 1.0)
+weights:
+  mathematical_structures: 0.25
+  problem_types: 0.20
+  semantic_similarity: 0.25
+  mathematical_patterns: 0.15
+  methodological_keywords: 0.10
+  structural_complexity: 0.05
+
+# Adaptive similarity thresholds
+thresholds:
+  base_threshold: 0.3
+  
+  # Adjustments based on pattern complexity
+  adaptive_adjustments:
+    complex_pattern_reduction: 0.1     # Lower threshold for complex patterns (>5 components)
+    moderate_pattern_reduction: 0.05   # Lower threshold for moderate patterns (>3 components)
+    uncertainty_iterative_boost: 0.05  # Lower threshold for uncertainty + iterative patterns
+    rich_abstraction_boost: 0.03       # Lower threshold for rich domain-agnostic terms (>7)
+  
+  # Threshold bounds
+  bounds:
+    min_threshold: 0.15
+    max_threshold: 0.45
+
+# Confidence calculation parameters
+confidence:
+  base_confidence: 0.3
+  boosts:
+    text_length: 0.2      # Boost for papers with >100 words
+    has_abstract: 0.2     # Boost for papers with abstracts
+    technical_terms: 0.2  # Boost for papers with >2 technical terms
+    math_structures: 0.1  # Boost for papers with mathematical structures
+
+# Semantic similarity settings
+semantic:
+  fallback_confidence: 0.5  # Used when semantic model unavailable
+  text_truncation: 512      # Characters to use for semantic comparison
+
+# Mathematical pattern similarity
+mathematical_patterns:
+  concept_overlap_weight: 0.5
+  iterative_boost: 0.3
+  uncertainty_boost: 0.2
+
+# Structural similarity parameters
+structural:
+  iterative_match_boost: 0.5
+  uncertainty_match_boost: 0.3
+  no_uncertainty_match_boost: 0.1
+  complexity_weight: 0.2
+
+# Paper filtering and ranking
+filtering:
+  min_overall_similarity: 0.3
+  min_confidence: 0.4
+  title_similarity_threshold: 0.85  # For duplicate detection

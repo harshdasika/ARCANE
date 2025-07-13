@@ -1,0 +1,387 @@
+# ARCANE Domain Configuration
+# Domain vocabularies, concept mappings, and cross-domain search terms
+
+# Scientific domain vocabularies
+domain_vocabularies:
+  physics:
+    core_terms:
+      - "quantum"
+      - "particle"
+      - "wave"
+      - "field"
+      - "energy"
+      - "momentum"
+      - "dynamics"
+      - "mechanics"
+      - "thermodynamics"
+      - "statistical mechanics"
+      - "condensed matter"
+      - "plasma"
+      - "optics"
+      - "electromagnetic"
+    mathematical_structures:
+      - "hamiltonian"
+      - "lagrangian"
+      - "schrödinger"
+      - "maxwell"
+      - "fourier"
+      - "eigenvalue"
+      - "tensor"
+      - "manifold"
+      - "symmetry"
+      - "group theory"
+    methods:
+      - "monte carlo"
+      - "molecular dynamics"
+      - "density functional"
+      - "perturbation theory"
+      - "variational"
+      - "finite element"
+      - "spectral"
+
+  chemistry:
+    core_terms:
+      - "molecular"
+      - "chemical"
+      - "reaction"
+      - "catalyst"
+      - "bond"
+      - "electron"
+      - "orbital"
+      - "synthesis"
+      - "kinetics"
+      - "thermochemistry"
+      - "electrochemistry"
+      - "polymer"
+      - "crystal"
+      - "spectroscopy"
+    mathematical_structures:
+      - "reaction network"
+      - "potential energy surface"
+      - "transition state"
+      - "chemical graph"
+      - "molecular orbital"
+      - "correlation function"
+    methods:
+      - "dft"
+      - "quantum chemistry"
+      - "molecular mechanics"
+      - "ab initio"
+      - "semi-empirical"
+      - "cheminformatics"
+
+  biology:
+    core_terms:
+      - "protein"
+      - "dna"
+      - "rna"
+      - "gene"
+      - "enzyme"
+      - "cell"
+      - "membrane"
+      - "metabolism"
+      - "evolution"
+      - "phylogeny"
+      - "genomics"
+      - "proteomics"
+      - "bioinformatics"
+      - "molecular biology"
+    mathematical_structures:
+      - "sequence alignment"
+      - "phylogenetic tree"
+      - "network topology"
+      - "population dynamics"
+      - "regulatory network"
+      - "metabolic pathway"
+    methods:
+      - "blast"
+      - "hmm"
+      - "phylogenetic analysis"
+      - "molecular dynamics"
+      - "systems biology"
+      - "machine learning"
+
+  computer_science:
+    core_terms:
+      - "algorithm"
+      - "complexity"
+      - "optimization"
+      - "learning"
+      - "neural"
+      - "graph"
+      - "network"
+      - "distributed"
+      - "parallel"
+      - "cryptography"
+      - "machine learning"
+      - "artificial intelligence"
+      - "data mining"
+      - "software"
+    mathematical_structures:
+      - "computational complexity"
+      - "graph theory"
+      - "information theory"
+      - "probability theory"
+      - "linear algebra"
+      - "discrete mathematics"
+    methods:
+      - "dynamic programming"
+      - "gradient descent"
+      - "reinforcement learning"
+      - "deep learning"
+      - "bayesian"
+      - "clustering"
+
+  mathematics:
+    core_terms:
+      - "theorem"
+      - "proof"
+      - "algebra"
+      - "geometry"
+      - "topology"
+      - "analysis"
+      - "differential"
+      - "integral"
+      - "probability"
+      - "statistics"
+      - "optimization"
+      - "numerical"
+      - "discrete"
+      - "logic"
+    mathematical_structures:
+      - "group"
+      - "ring"
+      - "field"
+      - "manifold"
+      - "metric space"
+      - "hilbert space"
+      - "banach space"
+      - "category theory"
+    methods:
+      - "proof by induction"
+      - "variational calculus"
+      - "perturbation theory"
+      - "approximation theory"
+      - "spectral theory"
+
+  engineering:
+    core_terms:
+      - "design"
+      - "optimization"
+      - "control"
+      - "system"
+      - "signal"
+      - "circuit"
+      - "mechanical"
+      - "electrical"
+      - "structural"
+      - "materials"
+      - "manufacturing"
+      - "robotics"
+      - "automation"
+      - "reliability"
+    mathematical_structures:
+      - "transfer function"
+      - "state space"
+      - "feedback loop"
+      - "optimization problem"
+      - "constraint satisfaction"
+      - "finite element"
+    methods:
+      - "finite element analysis"
+      - "control theory"
+      - "signal processing"
+      - "optimization algorithms"
+      - "simulation"
+
+  economics:
+    core_terms:
+      - "market"
+      - "price"
+      - "demand"
+      - "supply"
+      - "utility"
+      - "equilibrium"
+      - "game theory"
+      - "behavioral"
+      - "macro"
+      - "micro"
+      - "financial"
+      - "econometrics"
+      - "risk"
+      - "portfolio"
+    mathematical_structures:
+      - "utility function"
+      - "production function"
+      - "market equilibrium"
+      - "nash equilibrium"
+      - "stochastic process"
+      - "time series"
+    methods:
+      - "regression analysis"
+      - "monte carlo"
+      - "optimization"
+      - "game theory"
+      - "machine learning"
+
+# Cross-domain concept mappings
+concept_mappings:
+  optimization:
+    physics: ["energy minimization", "ground state", "variational principle"]
+    chemistry: ["reaction optimization", "catalyst design", "molecular conformation"]
+    biology: ["fitness landscape", "evolutionary optimization", "metabolic flux"]
+    computer_science: ["algorithm optimization", "neural network training", "resource allocation"]
+    mathematics: ["convex optimization", "global optimization", "constrained optimization"]
+    engineering: ["design optimization", "control optimization", "structural optimization"]
+    economics: ["utility maximization", "cost minimization", "portfolio optimization"]
+
+  uncertainty_quantification:
+    physics: ["quantum uncertainty", "measurement uncertainty", "statistical mechanics"]
+    chemistry: ["reaction uncertainty", "property prediction", "experimental error"]
+    biology: ["biological variability", "measurement noise", "population uncertainty"]
+    computer_science: ["algorithmic uncertainty", "prediction confidence", "bayesian inference"]
+    mathematics: ["probability theory", "statistical inference", "error analysis"]
+    engineering: ["reliability analysis", "safety factors", "design under uncertainty"]
+    economics: ["risk assessment", "market volatility", "decision under uncertainty"]
+
+  network_analysis:
+    physics: ["lattice systems", "percolation", "phase transitions", "critical phenomena"]
+    chemistry: ["reaction networks", "molecular networks", "crystal structures"]
+    biology: ["protein networks", "gene networks", "ecological networks", "neural networks"]
+    computer_science: ["graph algorithms", "social networks", "communication networks"]
+    mathematics: ["graph theory", "network topology", "spectral graph theory"]
+    engineering: ["circuit networks", "transportation networks", "communication systems"]
+    economics: ["market networks", "supply chains", "financial networks"]
+
+  dynamical_systems:
+    physics: ["hamiltonian dynamics", "chaotic systems", "phase space"]
+    chemistry: ["reaction kinetics", "chemical oscillators", "autocatalysis"]
+    biology: ["population dynamics", "epidemiology", "circadian rhythms"]
+    computer_science: ["discrete dynamical systems", "cellular automata", "agent-based models"]
+    mathematics: ["differential equations", "dynamical systems theory", "chaos theory"]
+    engineering: ["control systems", "mechanical dynamics", "fluid dynamics"]
+    economics: ["economic cycles", "market dynamics", "growth models"]
+
+  pattern_recognition:
+    physics: ["signal detection", "pattern formation", "symmetry breaking"]
+    chemistry: ["spectral analysis", "molecular recognition", "structure determination"]
+    biology: ["sequence analysis", "protein folding patterns", "evolutionary patterns"]
+    computer_science: ["machine learning", "computer vision", "data mining"]
+    mathematics: ["statistical pattern recognition", "harmonic analysis", "wavelets"]
+    engineering: ["signal processing", "image analysis", "fault detection"]
+    economics: ["market pattern analysis", "behavioral patterns", "trend analysis"]
+
+  prediction:
+    physics: ["forecasting", "extrapolation", "theoretical prediction"]
+    chemistry: ["property prediction", "reaction prediction", "synthesis planning"]
+    biology: ["protein function prediction", "disease prediction", "evolutionary prediction"]
+    computer_science: ["predictive modeling", "forecasting algorithms", "machine learning"]
+    mathematics: ["regression analysis", "time series forecasting", "statistical prediction"]
+    engineering: ["performance prediction", "failure prediction", "design prediction"]
+    economics: ["economic forecasting", "market prediction", "risk prediction"]
+
+  active_learning:
+    physics: ["experimental design", "adaptive sampling", "optimal control"]
+    chemistry: ["reaction optimization", "experimental planning", "catalyst screening"]
+    biology: ["experimental evolution", "adaptive sampling", "bioassay optimization"]
+    computer_science: ["active learning algorithms", "query strategy", "online learning"]
+    mathematics: ["optimal experimental design", "sequential analysis", "adaptive methods"]
+    engineering: ["design of experiments", "adaptive control", "optimization"]
+    economics: ["experimental economics", "adaptive markets", "learning models"]
+
+# Search term templates for cross-domain discovery
+search_templates:
+  optimization_across_domains:
+    - "{domain1} optimization {domain2}"
+    - "optimization techniques {domain1} {domain2}"
+    - "mathematical optimization {domain1}"
+    - "global optimization {domain1}"
+    - "constrained optimization {domain1}"
+
+  uncertainty_across_domains:
+    - "uncertainty quantification {domain1}"
+    - "bayesian {domain1} {domain2}"
+    - "probabilistic {domain1}"
+    - "uncertainty propagation {domain1}"
+    - "risk assessment {domain1}"
+
+  network_across_domains:
+    - "network analysis {domain1}"
+    - "graph theory {domain1}"
+    - "complex networks {domain1}"
+    - "network topology {domain1}"
+    - "connectivity {domain1}"
+
+  dynamics_across_domains:
+    - "dynamical systems {domain1}"
+    - "time series {domain1}"
+    - "temporal dynamics {domain1}"
+    - "evolution {domain1}"
+    - "feedback {domain1}"
+
+  pattern_across_domains:
+    - "pattern recognition {domain1}"
+    - "classification {domain1}"
+    - "feature extraction {domain1}"
+    - "clustering {domain1}"
+    - "similarity {domain1}"
+
+  prediction_across_domains:
+    - "prediction {domain1} {domain2}"
+    - "forecasting {domain1}"
+    - "predictive modeling {domain1}"
+    - "machine learning {domain1}"
+    - "regression {domain1}"
+
+  active_learning_across_domains:
+    - "active learning {domain1}"
+    - "experimental design {domain1}"
+    - "adaptive sampling {domain1}"
+    - "sequential {domain1}"
+    - "feedback {domain1}"
+
+# Domain-specific mathematical structures
+mathematical_structures:
+  optimization_problems:
+    convex_optimization: ["convex", "linear programming", "quadratic programming"]
+    nonconvex_optimization: ["global optimization", "evolutionary", "genetic algorithm"]
+    constrained_optimization: ["lagrange", "kkt", "penalty method"]
+    stochastic_optimization: ["robust optimization", "chance constraint", "scenario"]
+    multi_objective: ["pareto", "multi-objective", "multi-criteria"]
+
+  uncertainty_structures:
+    bayesian: ["prior", "posterior", "likelihood", "mcmc"]
+    frequentist: ["confidence interval", "hypothesis test", "p-value"]
+    fuzzy: ["fuzzy set", "membership function", "possibility"]
+    robust: ["worst-case", "minimax", "robust optimization"]
+    conformal: ["conformal prediction", "coverage", "validity"]
+
+  network_structures:
+    graph_theory: ["vertex", "edge", "path", "cycle", "connectivity"]
+    random_graphs: ["erdos-renyi", "small-world", "scale-free", "preferential attachment"]
+    dynamic_networks: ["temporal network", "evolving graph", "network dynamics"]
+    multilayer: ["multiplex", "multi-layer", "interdependent networks"]
+
+  dynamical_structures:
+    differential_equations: ["ode", "pde", "dynamical system", "phase portrait"]
+    discrete_dynamics: ["map", "iteration", "fixed point", "chaos"]
+    stochastic_dynamics: ["stochastic process", "brownian motion", "markov"]
+    delay_systems: ["delay differential equation", "functional differential"]
+
+# Quality indicators for cross-domain matches
+quality_indicators:
+  high_quality:
+    mathematical_overlap: 0.7
+    methodological_similarity: 0.6
+    citation_threshold: 10
+    venue_quality: ["nature", "science", "cell", "jacs", "physical review"]
+    
+  medium_quality:
+    mathematical_overlap: 0.5
+    methodological_similarity: 0.4
+    citation_threshold: 5
+    
+  low_quality:
+    mathematical_overlap: 0.3
+    methodological_similarity: 0.2
+    citation_threshold: 1

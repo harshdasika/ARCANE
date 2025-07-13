@@ -1,0 +1,23 @@
+# ARCANE Main Configuration
+# Core system settings and defaults
+
+database:
+  path: "academic_papers.db"  # Can be overridden by ARCANE_DB_PATH
+  cache_ttl_hours: 24         # Can be overridden by CACHE_TTL_HOURS
+
+semantic_model:
+  name: "all-MiniLM-L6-v2"    # Can be overridden by SEMANTIC_MODEL_NAME
+  fallback_models:
+    - "all-MiniLM-L12-v2"
+    - "sentence-transformers/all-mpnet-base-v2"
+  text_limit: 512
+
+logging:
+  level: "INFO"               # Can be overridden by LOG_LEVEL
+  max_concurrent_requests: 10 # Can be overridden by MAX_CONCURRENT_REQUESTS
+
+limits:
+  max_search_results: 20
+  max_solutions: 10
+  max_queries_per_domain: 15
+  optimal_paper_count: 50

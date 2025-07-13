@@ -4,17 +4,28 @@ ARCANE is a Model Context Protocol (MCP) server that provides unified access to 
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
+### Option 1: Smithery Installation (Easiest)
+
+ARCANE is available on Smithery for one-click installation:
+**🔗 [Install ARCANE on Smithery](https://smithery.ai/server/@harshdasika/arcane)**
+
+This should automatically install and configure ARCANE for use with Claude Desktop.
+
+### Option 2: Manual Installation (Recommended for Customization)
+
+For full control over configuration, API keys, and customization:
+
+#### 1. Prerequisites
 
 - Python 3.9 or higher
 - macOS, Linux, or Windows
-- Claude Desktop installed
+- Claude Desktop (but it should work on the ChatGPT desktop app as well) installed
 
-### 2. Installation
+#### 2. Installation
 
 ```bash
-# Clone or create the project directory
-git clone <repository-url>
+# Clone the repository to your computer
+git clone https://github.com/harshdasika/arcane.git
 cd ARCANE
 
 # Create a virtual environment
@@ -26,33 +37,20 @@ source venv/bin/activate
 # On Windows:
 # venv\Scripts\activate
 
-# Install dependencies from requirements.txt
+# Install dependencies
 pip install -r requirements.txt
 
 # Install the package in development mode
 pip install -e .
 ```
 
-### 3. Configure Claude Desktop
+#### 3. Configure Claude Desktop
 
-#### Find Your Claude Desktop Config File
+##### Find Your Claude Desktop Config File
 
-**macOS:**
-```bash
-~/Library/Application Support/Claude/claude_desktop_config.json
-```
+Go to Settings --> Developer --> Edit Config. Then, open the file.
 
-**Windows:**
-```
-%APPDATA%\Claude\claude_desktop_config.json
-```
-
-**Linux:**
-```bash
-~/.config/Claude/claude_desktop_config.json
-```
-
-#### Edit the Configuration
+##### Edit the Configuration
 
 Add the MCP server to your Claude Desktop configuration:
 
@@ -60,7 +58,7 @@ Add the MCP server to your Claude Desktop configuration:
 {
   "mcpServers": {
     "academic-discovery": {
-      "command": "/path/to/your/ARCANE/arcane-wrapper.sh",
+      "command": "/absolute/path/to/your/ARCANE/arcane-wrapper.sh",
       "env": {
         "LOG_LEVEL": "INFO"
       }
@@ -69,21 +67,30 @@ Add the MCP server to your Claude Desktop configuration:
 }
 ```
 
-**Important:** Replace `/path/to/your/ARCANE/` with the actual path to your project directory.
+**Important:** Replace `/absolute/path/to/your/ARCANE/` with the actual absolute path to your project directory.
 
-### 4. Restart Claude Desktop
+#### 4. Make Wrapper Script Executable
+
+```bash
+# Make the wrapper script executable
+chmod +x arcane-wrapper.sh
+```
+
+#### 5. Restart Claude Desktop
 
 After updating the configuration file, restart Claude Desktop for the changes to take effect.
 
-### 5. Test It!
+#### 6. Test It!
 
 Once Claude Desktop restarts, you can test the MCP server by asking:
 
 - "Search for papers about transformer neural networks"
-- "Get details for arXiv paper 1706.03762" (iykyk)
+- "Get details for arXiv paper 1706.03762"
 - "Find all identifiers for that paper"
 - "Get citation data for DOI 10.1038/nature14539"
 - "Build a citation graph for that paper"
+- "Analyze this research problem: [your problem description]"
+- "Find solutions to [your problem description] across various domains"
 
 ## ✨ Features
 
@@ -92,16 +99,23 @@ Once Claude Desktop restarts, you can test the MCP server by asking:
 - 📊 **Citation Analysis**: Get citation data from OpenCitations
 - 🕸️ **Citation Graphs**: Build network visualizations of paper relationships
 - 💾 **Intelligent Caching**: SQLite database prevents duplicate API calls
+- 🔄 **Cross-Domain Research**: Discover solutions from other scientific domains
+- 🧠 **Neural-Symbolic Analysis**: Advanced problem abstraction and solution translation
 
 ## 🛠️ Available Tools
 
 | Tool | Description | Best Identifier |
 |------|-------------|----------------|
-| `search_papers` | Multi-source paper search | Any (natural language queries) |
-| `get_paper` | Detailed paper information | arXiv ID, DOI, or Semantic Scholar ID |
-| `resolve_identifiers` | Cross-platform ID mapping | Any identifier type |
-| `get_citations` | Citation and reference data | **DOI recommended** |
-| `build_citation_graph` | Network visualization data | **DOI required** |
+| `search_papers` | Multi-source paper search across arXiv, Semantic Scholar, and other sources | Any (natural language queries) |
+| `get_paper` | Get detailed information about a specific paper | arXiv ID, DOI, or Semantic Scholar ID |
+| `resolve_identifiers` | Find all known identifiers for a paper across different databases | Any identifier type |
+| `get_citations` | Get citation data (incoming citations and outgoing references) | **DOI recommended** |
+| `build_citation_graph` | Build citation network graph around a paper | **DOI required** |
+| `analyze_research_problem` | Comprehensive cross-domain research analysis with full reasoning trace | Research problem description |
+| `quick_research_analysis` | Fast cross-domain analysis with limited depth for initial exploration | Research problem description |
+| `abstract_mathematical_patterns` | Extract mathematical and methodological patterns from research problems | Research problem description |
+| `discover_cross_domain_solutions` | Search for structurally similar solutions across scientific domains | Abstracted mathematical patterns |
+| `translate_solutions` | Translate cross-domain solutions back to target domain with adaptations | Cross-domain search results |
 
 ## 📋 Identifier Compatibility
 
@@ -122,17 +136,21 @@ See `IDENTIFIER_COMPATIBILITY.md` for detailed compatibility information.
 Create a `.env` file in your project root for API keys and configuration:
 
 ```bash
-# API Keys (optional but recommended)
+# ARCANE MCP Server Configuration
+
+# API Keys (Optional but recommended for higher rate limits)
 SEMANTIC_SCHOLAR_API_KEY=your_api_key_here
 OPENCITATIONS_ACCESS_TOKEN=your_token_here
 
-# Database
+# Database Configuration
 ARCANE_DB_PATH=./data/academic_papers.db
+CACHE_TTL_HOURS=24
 
-# Logging
+# Server Configuration
 LOG_LEVEL=INFO
+MAX_CONCURRENT_REQUESTS=10
 
-# Rate Limits
+# Rate Limiting (requests per second)
 ARXIV_RATE_LIMIT=1.0
 S2_RATE_LIMIT=1.0
 OC_RATE_LIMIT=2.0
@@ -173,6 +191,7 @@ All refer to the same paper ("Attention Is All You Need"), but each platform use
 - **Error Handling**: Graceful degradation when APIs are unavailable
 - **Extensible**: Easy to add new data sources
 - **Testable**: Modular design with clear interfaces
+- **Cross-Domain**: Advanced pattern recognition across scientific domains
 
 ## 🔍 Troubleshooting
 
@@ -183,7 +202,7 @@ All refer to the same paper ("Attention Is All You Need"), but each platform use
 - Reinstall the package: `pip install -e .`
 
 **2. Claude Desktop can't find the server**
-- Check that the path in your config file is correct
+- Check that the path in your config file is correct and absolute
 - Ensure the wrapper script is executable: `chmod +x arcane-wrapper.sh`
 - Verify the virtual environment exists and is properly set up
 
@@ -195,6 +214,11 @@ All refer to the same paper ("Attention Is All You Need"), but each platform use
 **4. Permission denied errors**
 - Make sure the wrapper script is executable: `chmod +x arcane-wrapper.sh`
 - Check file permissions on the project directory
+
+**5. "Command not found" errors**
+- Verify the absolute path in your Claude Desktop config is correct
+- Ensure the `arcane-wrapper.sh` file exists at the specified path
+- Check that the file has execute permissions
 
 ### Manual Testing
 
@@ -212,6 +236,26 @@ python src/arcane_mcp/server.py
 
 You should see: `INFO:arcane: MCP Server initialized` in the terminal.
 
+### Verify Installation
+
+To verify everything is working:
+
+1. **Check wrapper script exists:**
+   ```bash
+   ls -la arcane-wrapper.sh
+   ```
+
+2. **Test wrapper script:**
+   ```bash
+   ./arcane-wrapper.sh
+   ```
+
+3. **Check virtual environment:**
+   ```bash
+   which python
+   # Should show: /path/to/ARCANE/venv/bin/python
+   ```
+
 ## 🤝 Contributing
 
 This is a complete, working implementation ready for production use. Areas for enhancement:
@@ -220,6 +264,7 @@ This is a complete, working implementation ready for production use. Areas for e
 - Enhanced fuzzy matching algorithms
 - Advanced citation analysis features
 - Performance optimizations
+- More scientific domains for cross-domain discovery
 
 ## 📝 License
 

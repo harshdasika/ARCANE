@@ -1,0 +1,61 @@
+# ARCANE Validation Configuration
+# Known cross-domain cases and validation patterns
+
+known_cases:
+  - name: "conformal_prediction_biomolecular"
+    description: "Conformal prediction applied to biomolecular design (e.g., Fannjiang et al.)"
+    conditions:
+      problem_types: ["uncertainty_quantification", "prediction"]
+      iterative_process: true
+    indicators:
+      conformal: ["conformal", "uncertainty", "feedback", "covariate shift"]
+      biomolecular: ["biomolecular", "molecular", "drug", "protein", "chemical"]
+    validation_weight: 0.3
+    required_matches:
+      conformal: 2
+      biomolecular: 1
+  
+  - name: "active_learning_optimization"
+    description: "Active learning applied to optimization across domains"
+    conditions:
+      problem_types: ["active_learning", "optimization"]
+    indicators:
+      active: ["active", "optimization"]
+      cross_domain: ["material", "robot", "finance", "drug"]
+    validation_weight: 0.2
+    required_matches:
+      active: 2
+      cross_domain: 1
+
+# Search validation patterns
+search_patterns:
+  # Specific search terms for known cases
+  conformal_prediction_terms:
+    - "conformal prediction feedback"
+    - "covariate shift biomolecular"
+    - "uncertainty guided design"
+    - "adaptive confidence"
+    - "Fannjiang conformal prediction"
+    - "biomolecular design uncertainty"
+    - "feedback covariate shift"
+    - "conformal prediction under feedback"
+  
+  active_learning_terms:
+    - "active learning uncertainty"
+    - "sequential experimental design"
+    - "acquisition under covariate shift"
+    - "adaptive sampling uncertainty"
+  
+  iterative_prediction_terms:
+    - "iterative prediction refinement"
+    - "adaptive prediction models"
+    - "sequential prediction update"
+    - "online learning prediction"
+
+# Confidence weights for validation
+confidence_weights:
+  base_confidence: 0.25
+  coverage_confidence: 0.15
+  quality_confidence: 0.25
+  diversity_confidence: 0.15
+  validation_confidence: 0.20

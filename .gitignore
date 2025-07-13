@@ -149,3 +149,61 @@ test_api.py
 test_comprehensive.py
 debug_resolver.py
 IDENTIFIER_COMPATIBILITY.md
+
+# AI/ML specific files
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+*.tflite
+*.pb
+models/
+checkpoints/
+wandb/
+runs/
+mlruns/
+
+# Cache and temporary directories
+.cache/
+cache/
+tmp/
+temp/
+
+# Configuration files with sensitive data
+config.ini
+secrets.json
+credentials.json
+
+# Large data files
+*.csv
+*.json
+*.parquet
+*.feather
+*.hdf
+*.h5
+*.nc
+*.netcdf
+datasets/
+raw_data/
+processed_data/
+
+# Documentation build
+docs/_build/
+site/
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.yaml
+
+# Local development
+local/
+dev/
+development/

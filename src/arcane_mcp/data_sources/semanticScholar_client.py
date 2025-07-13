@@ -2,20 +2,27 @@
 
 from typing import Dict, List, Optional, Any
 from arcane_mcp.data_sources.base_client import BaseAPIClient, RateLimitConfig
+from ..config.config_manager import config_manager
 
 class SemanticScholarClient(BaseAPIClient):
     """Semantic Scholar API client"""
     
     def __init__(self, api_key: Optional[str] = None):
+        # Get configuration values
+        base_url = config_manager.get('api', 'semantic_scholar.base_url', 'https://api.semanticscholar.org/graph/v1/')
+        rate_limit = config_manager.get('api', 'semantic_scholar.rate_limit', 1.0)
+        enhanced_rate_limit = config_manager.get('api', 'semantic_scholar.enhanced_rate_limit', 10.0)
+        
         super().__init__(
-            base_url="https://api.semanticscholar.org/graph/v1/",
-            rate_limit_config=RateLimitConfig(requests_per_second=1.0 if not api_key else 10.0),
+            base_url=base_url,
+            rate_limit_config=RateLimitConfig(requests_per_second=rate_limit if not api_key else enhanced_rate_limit),
             api_key=api_key
         )
     
     def _get_headers(self) -> Dict[str, str]:
         """Get headers with API key if available"""
-        headers = {'User-Agent': 'ARCANE/1.0'}
+        user_agent = config_manager.get('api', 'semantic_scholar.user_agent', 'ARCANE/1.0')
+        headers = {'User-Agent': user_agent}
         if self.api_key:
             headers['x-api-key'] = self.api_key
         return headers
